@@ -103,7 +103,7 @@
                 <div class="avatar">
                   <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-5.jpg" alt="people">
                 </div>
-                <div class="name"><a href="#">John Breakgrow jr.</a></div>
+                <div class="name"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></div>
                 <ul class="cover-nav">
                   <li><a href="profile"><i class="fa fa-fw fa-bars"></i> Timeline</a></li>
                   <li class="active"><a href="about"><i class="fa fa-fw fa-user"></i> About</a></li>
@@ -128,7 +128,7 @@
                     Email:
                   </div>
                   <div class="col-xs-9">
-                    example@yourdomain.com
+                    ${sessionScope.u.email}
                   </div>
                   <div class="col-xs-3">
                     Phone:
@@ -146,7 +146,7 @@
                     Birthday:
                   </div>
                   <div class="col-xs-9">
-                    1975/8/17
+                    ${sessionScope.u.day} ${sessionScope.u.month} ${sessionScope.u.year}
                   </div>
                   <div class="col-xs-3">
                     URL:

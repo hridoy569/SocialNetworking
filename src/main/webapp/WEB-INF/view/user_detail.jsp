@@ -45,7 +45,7 @@
                       <img src="${pageContext.request.contextPath}/resources/img/Cover/nature.jpg" alt="cover" class="cover">
                       <div class="cont">
                         <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="avatar" class="avatar">
-                        <div class="name"><span class="s-text">John Breakgrow jr.</span></div>
+                        <div class="name"><span class="s-text">${sessionScope.u.firstName} ${sessionScope.u.lastName}</span></div>
                       </div>
                     </div>
             
@@ -56,7 +56,7 @@
                             Email:
                           </div>
                           <div class="col-xs-9">
-                            example@yourdomain.com
+                            ${sessionScope.u.email}
                           </div>
                           <div class="col-xs-3">
                             Phone:
@@ -74,7 +74,7 @@
                             Birthday:
                           </div>
                           <div class="col-xs-9">
-                            1975/8/17
+                            ${sessionScope.u.day} ${sessionScope.u.month} ${sessionScope.u.year}
                           </div>
                           <div class="col-xs-3">
                             URL:

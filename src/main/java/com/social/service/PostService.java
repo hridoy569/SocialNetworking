@@ -7,6 +7,8 @@ package com.social.service;
 
 import com.social.dao.PostDaoInterface;
 import com.social.entity.Post;
+import com.social.entity.Users;
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DaoSupport;
@@ -19,9 +21,14 @@ public class PostService implements PostServiceInterface{
     
     @Autowired
     private PostDaoInterface postDaoInt;
+    private Users user;
+
+    
 
     @Override
     public void addPost(Post post) {
+        
+        postDaoInt.addPost(new Post(100,post.getPostTitle(),post.getPostContext(),"Public",new Date(),"dd"));
     }
 
     @Override

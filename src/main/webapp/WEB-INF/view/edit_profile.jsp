@@ -62,7 +62,7 @@
                                 <div class="col-md-3">
                                     <div class="user-info-left">
                                         <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="Profile Picture">
-                                        <h2>John Breakgrow jr.</h2>
+                                        <h2>${sessionScope.u.firstName} ${sessionScope.u.lastName}</h2>
                                         <div class="contact">
                                             <p>
                                                 <span class="file-input btn btn-azure btn-file">
@@ -145,7 +145,7 @@
                                             </p>
                                             <p class="data-row">
                                                 <%--<c:if test="${! empty userId}">--%>
-                                                <input class="btn btn-azure" type="submit" value="Update"/><a href="/SocialNetworking/edit/${user.userId}">Edit</a>
+                                                <input class="btn btn-azure" type="submit" value="Update"/>
                                             <%--</c:if>--%>
                                             </p>
                                             

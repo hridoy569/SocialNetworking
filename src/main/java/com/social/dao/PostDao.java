@@ -21,6 +21,7 @@ public class PostDao implements PostDaoInterface{
 
     @Override
     public void addPost(Post post) {
+        sessionFactory.getCurrentSession().save(post);
     }
 
     @Override

@@ -119,7 +119,7 @@
                 <li class="padding-v-5">
                   <div class="row">
                     <div class="col-sm-4"><span class="text-muted">Date of Birth</span></div>
-                    <div class="col-sm-8">12 January 1990</div>
+                    <div class="col-sm-8">${sessionScope.u.day} ${sessionScope.u.month} ${sessionScope.u.year}</div>
                   </div>
                 </li>
                 <li class="padding-v-5">
@@ -131,7 +131,7 @@
                 <li class="padding-v-5">
                   <div class="row">
                     <div class="col-sm-4"><span class="text-muted">Gender</span></div>
-                    <div class="col-sm-8">Male</div>
+                    <div class="col-sm-8">${sessionScope.u.sex}</div>
                   </div>
                 </li>
                 <li class="padding-v-5">
@@ -288,10 +288,10 @@
                 <!-- post state form -->
                   <div class="box profile-info n-border-top">
                     <form name="postForm" method="POST" ng-controller="PostController as postCtrl">
-                        <textarea class="form-control input-lg p-text-area" rows="2" ng-model="postCtrl.post.postContext" placeholder="Whats in your mind today?"></textarea>
+                        <textarea class="form-control input-lg p-text-area" rows="2"  placeholder="Whats in your mind today?"></textarea>
                     
                     <div class="box-footer box-form">
-                        <button type="button" class="btn btn-azure pull-right" ng-click="postCtrl.addPost()">Post</button>
+                        <button type="button" class="btn btn-azure pull-right" >Post</button>
                         <ul class="nav nav-pills">
                             <li><a href="#"><i class="fa fa-map-marker"></i></a></li>
                             <li><a href="#"><i class="fa fa-camera"></i></a></li>
@@ -323,7 +323,7 @@
                     <div class="box-header with-border">
                       <div class="user-block">
                         <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                        <span class="username"><a href="#">John Breakgrow jr.</a></span>
+                        <span class="username"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></span>
                         <span class="description">Shared publicly - 7:30 PM Today</span>
                       </div>
                     </div>
@@ -376,7 +376,7 @@
                     <div class="box-header with-border">
                       <div class="user-block">
                         <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                        <span class="username"><a href="#">Jonathan Burke Jr.</a></span>
+                        <span class="username"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></span>
                         <span class="description">Shared publicly - 7:30 PM Today</span>
                       </div>
                     </div>
@@ -445,7 +445,7 @@
                     <div class="box-header with-border">
                       <div class="user-block">
                         <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                        <span class="username"><a href="#">John Breakgrow jr.</a></span>
+                        <span class="username"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></span>
                         <span class="description">Shared publicly - 7:30 PM Today</span>
                       </div>
                     </div>

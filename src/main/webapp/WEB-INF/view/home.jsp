@@ -1,8 +1,9 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
-<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
-<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
 <!DOCTYPE html>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
   
 <head>
@@ -92,9 +93,13 @@
                 <div class="col-md-12">
                 <!-- post state form -->
                   <div class="box profile-info n-border-top">
-                    <form name="postForm" method="POST" >
-                        <textarea class="form-control input-lg p-text-area" rows="2"  placeholder="Whats in your mind today?"></textarea>
-                    
+                      <c:url var="action" value="/post/add"></c:url>
+                      <form:form method="POST" action="${action}" commandName="post">
+                         
+                          <input class="form-control input-lg p-text-area" placeholder="Title" name="postTitle" path="postTitle"/>
+                          
+                          <textarea class="form-control input-lg p-text-area" rows="2"  placeholder=" Whats in your mind today?" path="postContext" name="postContext"></textarea>
+                
                     <div class="box-footer box-form">
                         <button type="submit"  class="btn btn-azure pull-right">Post</button>
                         <ul class="nav nav-pills">
@@ -104,7 +109,7 @@
                             <li><a href="#"><i class="fa fa-microphone"></i></a></li>
                         </ul>
                     </div>
-                    </form>
+                    </form:form>
                   </div><!-- end post state form -->
 
                   <!--   posts -->
@@ -112,7 +117,7 @@
                     <div class="box-header with-border">
                       <div class="user-block">
                         <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                        <span class="username"><a href="#">John Breakgrow jr.</a></span>
+                        <span class="username"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></span>
                         <span class="description">Shared publicly - 7:30 PM Today</span>
                       </div>
                     </div>
