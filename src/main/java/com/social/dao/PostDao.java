@@ -9,11 +9,13 @@ import com.social.entity.Post;
 import java.util.List;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
 
 /**
  *
  * @author B3
  */
+@Repository
 public class PostDao implements PostDaoInterface{
     
     @Autowired
@@ -21,6 +23,7 @@ public class PostDao implements PostDaoInterface{
 
     @Override
     public void addPost(Post post) {
+        sessionFactory.getCurrentSession().save(post);
     }
 
     @Override

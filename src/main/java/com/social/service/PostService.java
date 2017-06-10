@@ -10,11 +10,13 @@ import com.social.entity.Post;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.dao.support.DaoSupport;
+import org.springframework.stereotype.Service;
 
 /**
  *
  * @author B3
  */
+@Service
 public class PostService implements PostServiceInterface{
     
     @Autowired
@@ -22,6 +24,7 @@ public class PostService implements PostServiceInterface{
 
     @Override
     public void addPost(Post post) {
+        postDaoInt.addPost(post);
     }
 
     @Override
