@@ -6,7 +6,9 @@
 package com.social.controller;
 
 import com.social.entity.Post;
+import com.social.entity.Users;
 import com.social.service.PostServiceInterface;
+import java.util.Date;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.validation.BindingResult;
@@ -22,14 +24,14 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class PostCtrl {
     @Autowired
     private PostServiceInterface postServInt;
+    private Users user;
     
     @RequestMapping(value = "/post/add", method = RequestMethod.POST)
-    public String addPost(@ModelAttribute("post") Post post, BindingResult result) {
-        if (post.getPostId() == null) {
-            postServInt.addPost(post);
-        } else {
-            postServInt.updatePost(post);
-        }
-        return "redirect:/";
+    public String addPosts(@ModelAttribute("post") Post post, BindingResult result) {
+        
+            postServInt.addPost(new Post(post.getUserId(),post.getPostTitle(),post.getPostContext(),"public",new Date(),"n/a"));
+            System.out.println(post.getUserId()+""+post.getPostTitle()+""+post.getPostContext()+""+"public"+""+new Date()+""+"n/a");
+        
+        return "home";
     }
 }
