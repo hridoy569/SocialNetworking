@@ -77,30 +77,34 @@
             <div class="directory-info-row">
                 <div class="row">
                     <c:forEach items="${sessionScope.auList}" var="allUList">
-                        <div class="col-md-6 col-sm-6 col-xs-12">
-                            <div class="panel" style="height: 210px">
-                                <div class="panel-body">
-                                    <div class="media">
-                                        <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
-                                            <c:if test="${profilePhoto.userId eq allUList.userId}">
-                                                <a class="pull-left" href="#">
-                                                    <img class="thumb media-object" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${profilePhoto.fileLink}" alt="">
-                                                </a>
-                                            </c:if>
-                                        </c:forEach>
-                                        <div class="media-body">
-                                            <h4>${allUList.firstName} ${allUList.lastName}</h4>
-                                            <ul class="social-links">
-                                                <li><a href="#"title="Facebook"><i class="fa fa-facebook"></i></a></li>
-                                                <li><a href="#"title="Twitter"><i class="fa fa-twitter"></i></a></li>
-                                                <li><a href="#"title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
-                                                <li><a href="#"title="Skype"><i class="fa fa-skype"></i></a></li>
-                                                <li>
-                                                    <c:choose>
-                                                        <c:when test="${sessionScope.u.userId eq allUList.userId}">
-                                                            <input id="b" type="button" value="Send Friend Request" style="display:none;">
-                                                        </c:when>
-                                                        <c:otherwise>
+                        <c:choose>
+                            <c:when test="${sessionScope.u.userId eq allUList.userId}">
+                                <!--<input id="b" type="button" value="Send Friend Request" style="display:none;">-->
+                            </c:when>
+                            <c:otherwise>
+
+                                <div class="col-md-6 col-sm-6 col-xs-12">
+                                    <div class="panel" style="height: 210px">
+                                        <div class="panel-body">
+                                            <div class="media">
+                                                <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
+                                                    <c:if test="${profilePhoto.userId eq allUList.userId}">
+                                                        <c:set var="proPhoto" value="${profilePhoto.fileLink}" scope="session"></c:set>
+                                                            <a class="pull-left" href="#">
+                                                                <img class="thumb media-object" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${profilePhoto.fileLink}" alt="">
+                                                        </a>
+                                                    </c:if>
+                                                </c:forEach>
+
+                                                <div class="media-body">
+                                                    <a href="/SocialNetworking/showProfile${allUList.userId}"><h4>${allUList.firstName} ${allUList.lastName}</h4></a>
+                                                    <ul class="social-links">
+                                                        <li><a href="#"title="Facebook"><i class="fa fa-facebook"></i></a></li>
+                                                        <li><a href="#"title="Twitter"><i class="fa fa-twitter"></i></a></li>
+                                                        <li><a href="#"title="LinkedIn"><i class="fa fa-linkedin"></i></a></li>
+                                                        <li><a href="#"title="Skype"><i class="fa fa-skype"></i></a></li>
+                                                        <li>
+
 
 
                                                             <c:forEach var="rs" items="${sessionScope.requestSent}">
@@ -158,28 +162,22 @@
                                                                     </form:form>
                                                                 </c:otherwise>      
                                                             </c:choose>
-
-
-                                                        </c:otherwise>      
-                                                    </c:choose>
-                                                </li>
-                                            </ul>
-                                            <address>
-                                                <c:set var = "regDate" value = "${fn:substring(allUList.regDate, 0, 10)}"></c:set>
-                                                <strong>${allUList.email}</strong><br>
-                                                From Dhaka, Bangladesh.<br>
-                                                Member Since  ${regDate} <br>
-                                            </address>
-
-
-
+                                                        </li>
+                                                    </ul>
+                                                    <address>
+                                                        <c:set var = "regDate" value = "${fn:substring(allUList.regDate, 0, 10)}"></c:set>
+                                                        <strong>${allUList.email}</strong><br>
+                                                        From Dhaka, Bangladesh.<br>
+                                                        Member Since  ${regDate} <br>
+                                                    </address>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </div>
+                            </c:otherwise>      
+                        </c:choose>
                     </c:forEach>
-
                 </div>
             </div>
         </div>

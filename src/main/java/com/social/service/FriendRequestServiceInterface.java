@@ -20,6 +20,10 @@ public interface FriendRequestServiceInterface {
     public List<FriendRequest> update(FriendRequest fr);
     
     public List<Users> reject(FriendRequest fr);
+    
+    public List<Users> accept(FriendRequest fr);
+    
+    public void unfriend(FriendRequest fr);
 
     public List<FriendRequest> getAll();
 

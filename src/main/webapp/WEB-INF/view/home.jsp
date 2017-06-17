@@ -101,6 +101,7 @@
                                         <c:url var="action" value="homePostAdd"></c:url>
                                         <form:form method="post" action="${action}" commandName="post">
                                             <input class="form-control" type="hidden" name="userId" path="userId" value="${sessionScope.u.userId}">
+                                            <input class="form-control" type="hidden" name="userIdTo" path="userIdTo" value="${sessionScope.u.userId}">
                                             <input class="form-control input-lg p-text-area" name="postTitle" path="postTitle" placeholder="Write Title here"/>
                                             <textarea class="form-control input-lg p-text-area" rows="2" name="postContext" path="postContext" placeholder="Whats in your mind today?"></textarea>
 
@@ -612,6 +613,12 @@
                                         <a href="#">
                                             <div>
                                                 <table>
+                                                    <c:forEach var="grId2" items="${sessionScope.getRequestsId}">
+                                                        <c:if test="${grId2.userId eq getRequests.userId}">
+                                                            <c:set var="getReqId2" value="${grId2.friendRequstId}" scope="session"></c:set>
+                                                            <c:set var="getReqFrom" value="${getRequests.userId}" scope="session"></c:set>
+                                                        </c:if>
+                                                    </c:forEach>
                                                     <tr style="height: 60px; width: 350px">
                                                         <td>
                                                             <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
@@ -623,15 +630,18 @@
                                                             </c:forEach>
                                                         </td> 
                                                         <td class="t">${getRequests.firstName}</td><td style="padding-left: 5px">${getRequests.lastName}</td>
-                                                        <td class="t"><input style="margin-top: 0" type="button" value="Accept" class="btn btn-azure pull-right"></td>
+                                                        <td class="t">
+                                                            <form:form commandName="fr" action="acceptRequestHome" method="post">
+                                                                <input type="hidden" name="friendRequstId" path="friendRequstId" value="${sessionScope.getReqId2}">
+                                                                <input type="hidden" name="userId" path="usersByUserId" value="${sessionScope.getReqFrom}">
+                                                                <input type="hidden" name="userIdTo" path="usersByUserIdTo" value="${sessionScope.u.userId}">
+                                                                <input type="hidden" name="status" path="status" value="2">
+                                                                <input style="margin-top: 0" type="submit" value="Accept" class="btn btn-azure pull-right">
+                                                            </form:form>
+                                                        </td>
 
                                                         <td class="t">
-                                                            <c:forEach var="grId2" items="${sessionScope.getRequestsId}">
-                                                                <c:if test="${grId2.userId eq getRequests.userId}">
-                                                                    <c:set var="getReqId2" value="${grId2.friendRequstId}" scope="session"></c:set>
-                                                                    <c:set var="getReqFrom" value="${getRequests.userId}" scope="session"></c:set>
-                                                                </c:if>
-                                                            </c:forEach>
+
                                                             <form:form commandName="fr" action="rejectRequestHome" method="post">
                                                                 <input type="hidden" name="friendRequstId" path="friendRequstId" value="${sessionScope.getReqId2}">
                                                                 <input type="hidden" name="userId" path="usersByUserId" value="${sessionScope.getReqFrom}">

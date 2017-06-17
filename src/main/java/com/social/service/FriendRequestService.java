@@ -36,6 +36,16 @@ public class FriendRequestService implements FriendRequestServiceInterface{
     public List<Users> reject(FriendRequest fr) {
         return frdi.reject(fr);
     }
+    
+    @Override
+    public List<Users> accept(FriendRequest fr) {
+        return frdi.accept(fr);
+    }
+    
+    @Override
+    public void unfriend(FriendRequest fr) {
+        frdi.update(fr);
+    }
 
     @Override
     public List<FriendRequest> getAll() {

@@ -21,6 +21,10 @@ public interface FriendRequestDaoInterface {
     
     public List<Users> reject(FriendRequest fr);
 
+    public List<Users> accept(FriendRequest fr);
+    
+    public void unfriend(FriendRequest fr);
+    
     public List<FriendRequest> getAll();
 
     public FriendRequest getById(Integer Id);

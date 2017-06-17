@@ -25,6 +25,8 @@ public class Post  implements java.io.Serializable {
     private Integer postId;
     @Column(name = "user_id", nullable = false)
     private Integer userId;
+    @Column(name = "user_id_to", nullable = false)
+    private Integer userIdTo;
     @Column(name = "post_title", nullable = false, length = 45)
     private String postTitle;
     @Column(name = "post_context", nullable = false)
@@ -40,9 +42,9 @@ public class Post  implements java.io.Serializable {
     public Post() {
     }
 
-	
-    public Post(Integer userId, String postTitle, String postContext, String postType, Date postTime, String tags) {
+    public Post(Integer userId, Integer userIdTo, String postTitle, String postContext, String postType, Date postTime, String tags) {
         this.userId = userId;
+        this.userIdTo = userIdTo;
         this.postTitle = postTitle;
         this.postContext = postContext;
         this.postType = postType;
@@ -64,6 +66,14 @@ public class Post  implements java.io.Serializable {
 
     public void setUserId(Integer userId) {
         this.userId = userId;
+    }
+
+    public Integer getUserIdTo() {
+        return userIdTo;
+    }
+
+    public void setUserIdTo(Integer userIdTo) {
+        this.userIdTo = userIdTo;
     }
 
     public String getPostTitle() {
@@ -105,8 +115,8 @@ public class Post  implements java.io.Serializable {
     public void setTags(String tags) {
         this.tags = tags;
     }
-  
 
+	
 }
 
 

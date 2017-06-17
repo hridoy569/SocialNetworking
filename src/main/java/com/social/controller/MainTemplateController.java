@@ -16,6 +16,16 @@ public class MainTemplateController {
     public String getProfileTemplate() {
     	return "profile";	
     }
+    
+    @RequestMapping(value="/showProfile")
+    public String getProfileTemplate2() {
+    	return "showProfile";	
+    }
+    
+    @RequestMapping(value="/showFriendProfile")
+    public String getProfileTemplate3() {
+    	return "showFriendProfile";	
+    }
 
     @RequestMapping(value="/about")
     public String getAboutTemplate() {

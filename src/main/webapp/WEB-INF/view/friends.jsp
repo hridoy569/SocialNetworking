@@ -1,19 +1,23 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html lang="en">
-  
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-    <meta name="description" content="">
-    <meta name="keywords" content="">
-    <meta name="author" content="">
-    <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png">
-    <title>Day-Day</title>
-    <!-- Bootstrap core CSS -->
-    <link href="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/css/bootstrap.min.css" rel="stylesheet">
+
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+        <meta name="description" content="">
+        <meta name="keywords" content="">
+        <meta name="author" content="">
+        <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png">
+        <title>Day-Day</title>
+        <!-- Bootstrap core CSS -->
+        <link href="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/font-awesome.4.6.1/css/font-awesome.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/edit_profile.css" rel="stylesheet">
@@ -31,243 +35,263 @@
         <link href="${pageContext.request.contextPath}/resources/assets/css/mysearchbar.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/js/bootstrap.min.js"></script>
-    
-    
-  </head>
-
-  <body class="animated fadeIn">
 
 
+    </head>
 
-    <!-- Begin page content -->
-    <div class="row page-content">
-      <div class="col-md-8 col-md-offset-2">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="cover profile">
-              <div class="wrapper">
-                <div class="image">
-                  <img src="${pageContext.request.contextPath}/resources/img/Cover/profile-cover.jpg" class="show-in-modal" alt="people">
+    <body class="animated fadeIn">
+
+
+
+        <!-- Begin page content -->
+        <div class="row page-content">
+            <div class="col-md-8 col-md-offset-2">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="cover profile">
+                            <div class="wrapper">
+                                <div class="image">
+                                    <img src="${pageContext.request.contextPath}/resources/img/Cover/profile-cover.jpg" class="show-in-modal" alt="people">
+                                </div>
+                                <ul class="friends">
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-9.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-9.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-4.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-1.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li>
+                                        <a href="#">
+                                            <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="people" class="img-responsive">
+                                        </a>
+                                    </li>
+                                    <li><a href="#" class="group"><i class="fa fa-group"></i></a></li>
+                                </ul>
+                            </div>
+                            <div class="cover-info">
+                                <div class="avatar">
+                                    <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.ppa.fileLink}" alt="people">
+                                </div>
+                                <div class="name"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></div>
+                                <ul class="cover-nav">
+                                    <li><a href="profile"><i class="fa fa-fw fa-bars"></i> Timeline</a></li>
+                                    <li><a href="about"><i class="fa fa-fw fa-user"></i> About</a></li>
+                                    <li class="active"><a href="friends"><i class="fa fa-fw fa-users"></i> Friends</a></li>
+                                    <li><a href="photos1"><i class="fa fa-fw fa-image"></i> Photos</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <ul class="friends">
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-9.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-9.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-4.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-1.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li><a href="#" class="group"><i class="fa fa-group"></i></a></li>
-                </ul>
-              </div>
-              <div class="cover-info">
-                <div class="avatar">
-                  <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.ppa.fileLink}" alt="people">
+                <div class="row">
+                    <c:forEach var="getFriends" items="${sessionScope.getFriends}">
+                        <div class="col-md-3">
+                            <div class="contact-box center-version">
+                                <a href="/SocialNetworking/showFriendProfile${getFriends.userId}">
+                                    <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
+                                        <c:if test="${profilePhoto.userId eq getFriends.userId}">
+                                            <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${profilePhoto.fileLink}">
+                                        </c:if>
+                                    </c:forEach>
+
+                                    <h3 class="m-b-xs"><strong>${getFriends.firstName} ${getFriends.lastName}</strong></h3>
+
+                                    <div class="font-bold">Programmer</div>
+                                </a>
+                                <div class="contact-box-footer">
+                                    <div class="m-t-xs btn-group">
+                                        <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                        <!--<a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>-->
+                                        <c:forEach var="friendsId" items="${sessionScope.getFriendsId}">
+                                            <c:if test="${friendsId.userId eq getFriends.userId}">
+                                                <%--<c:set var="frndId" value="${friendsId.friendRequstId}" scope="session"></c:set>--%>
+                                                <!--${friendsId.friendRequstId}${friendsId.userId}${friendsId.userIdTo}-->
+                                                <a class="btn btn-xs btn-white" style="padding: 0;"><form:form commandName="fr" action="unfriend" method="post"><input type="hidden" name="friendRequstId" path="friendRequstId" value="${friendsId.friendRequstId}"><input type="hidden" name="userId" path="usersByUserId" value="${getFriends.userId}"><input type="hidden" name="userIdTo" path="usersByUserIdTo" value="${sessionScope.u.userId}"><input type="hidden" name="status" path="status" value="0"><i class="fa fa-user-times" style="margin-left: 8px "> <input type="submit" class="btn btn-xs btn-white" style="border: 0 none; padding-left: 0px; margin: 0" value="Unfriend"/></i></form:form></a>
+
+                                            </c:if>
+                                            <c:if test="${friendsId.userIdTo eq getFriends.userId}">
+                                                <!--${friendsId.friendRequstId}${friendsId.userId}${friendsId.userIdTo}-->
+                                                <a class="btn btn-xs btn-white" style="padding: 0;"><form:form commandName="fr" action="unfriend2" method="post"><input type="hidden" name="friendRequstId" path="friendRequstId" value="${friendsId.friendRequstId}"><input type="hidden" name="userId" path="usersByUserId" value="${sessionScope.u.userId}"><input type="hidden" name="userIdTo" path="usersByUserIdTo" value="${getFriends.userId}"><input type="hidden" name="status" path="status" value="0"><i class="fa fa-user-times" style="margin-left: 8px "> <input type="submit" class="btn btn-xs btn-white" style="border: 0 none; padding-left: 0px; margin: 0" value="Unfriend"/></i></form:form></a>
+                                            </c:if>
+                                        </c:forEach>
+                                        
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </c:forEach>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-1.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-2.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-5.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="contact-box center-version">
+                            <a href="#">
+                                <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-1.jpg">
+                                <h3 class="m-b-xs"><strong>John Doe</strong></h3>
+
+                                <div class="font-bold">Graphics designer</div>
+                            </a>
+                            <div class="contact-box-footer">
+                                <div class="m-t-xs btn-group">
+                                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
+                                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="name"><a href="#">${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></div>
-                <ul class="cover-nav">
-                  <li><a href="profile"><i class="fa fa-fw fa-bars"></i> Timeline</a></li>
-                  <li><a href="about"><i class="fa fa-fw fa-user"></i> About</a></li>
-                  <li class="active"><a href="friends"><i class="fa fa-fw fa-users"></i> Friends</a></li>
-                  <li><a href="photos1"><i class="fa fa-fw fa-image"></i> Photos</a></li>
-                </ul>
-              </div>
             </div>
-          </div>
         </div>
-        <div class="row">
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-1.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
 
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
+        <!-- Modal -->
+        <div class="modal fade" id="modalShow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body text-centers">
+                        ...
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
                 </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-1.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-2.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-5.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
-
-          <div class="col-md-3">
-              <div class="contact-box center-version">
-                <a href="#">
-                  <img alt="image" class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/woman-1.jpg">
-                  <h3 class="m-b-xs"><strong>John Doe</strong></h3>
-    
-                  <div class="font-bold">Graphics designer</div>
-                </a>
-                <div class="contact-box-footer">
-                  <div class="m-t-xs btn-group">
-                    <a href="messages1.html" class="btn btn-xs btn-white"><i class="fa fa-envelope"></i>Send Messages</a>
-                    <a class="btn btn-xs btn-white"><i class="fa fa-user-plus"></i> Follow</a>
-                  </div>
-                </div>
-              </div>
-          </div>
+            </div>
         </div>
-      </div>
-    </div>
-
-    <!-- Modal -->
-    <div class="modal fade" id="modalShow" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-            <h4 class="modal-title" id="myModalLabel">Modal title</h4>
-          </div>
-          <div class="modal-body text-centers">
-            ...
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
-        </div>
-      </div>
-    </div>
 
 
-       <!-- Fixed navbar -->
+        <!-- Fixed navbar -->
         <nav class="navbar navbar-white navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
@@ -377,7 +401,7 @@
                                 </div>
                             </div>
                         </li>
-                        
+
                         <li><a href="" target="_self" class="nav-controller"><i class="fa fa-user"></i></a></li>
                     </ul>
                 </div>
@@ -510,7 +534,7 @@
 
             });
         </script>
-  </body>
+    </body>
 
-<!-- Mirrored from demos.bootdey.com/dayday/friends.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2017 11:24:39 GMT -->
+    <!-- Mirrored from demos.bootdey.com/dayday/friends.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2017 11:24:39 GMT -->
 </html>
