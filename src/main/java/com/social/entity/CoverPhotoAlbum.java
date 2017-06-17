@@ -24,65 +24,59 @@ import javax.persistence.TemporalType;
 )
 public class CoverPhotoAlbum  implements java.io.Serializable {
 
-
+    @Id 
+    @GeneratedValue(strategy=IDENTITY)
+    @Column(name="cover_photo_id", unique=true, nullable=false)
      private Long coverPhotoId;
-     private Users users;
+     @Column(name = "user_id", nullable = false)
+     private Integer userId;
+     @Column(name = "added_date", nullable = false)
      private Date addedDate;
+     @Column(name="file_link", nullable=false, length=45)
      private String fileLink;
 
     public CoverPhotoAlbum() {
     }
 
-    public CoverPhotoAlbum(Users users, Date addedDate, String fileLink) {
-       this.users = users;
-       this.addedDate = addedDate;
-       this.fileLink = fileLink;
+    public CoverPhotoAlbum(Integer userId, Date addedDate, String fileLink) {
+        this.userId = userId;
+        this.addedDate = addedDate;
+        this.fileLink = fileLink;
     }
-   
-     @Id @GeneratedValue(strategy=IDENTITY)
 
-    
-    @Column(name="cover_photo_id", unique=true, nullable=false)
     public Long getCoverPhotoId() {
-        return this.coverPhotoId;
+        return coverPhotoId;
     }
-    
+
     public void setCoverPhotoId(Long coverPhotoId) {
         this.coverPhotoId = coverPhotoId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable=false)
-    public Users getUsers() {
-        return this.users;
-    }
-    
-    public void setUsers(Users users) {
-        this.users = users;
+    public Integer getUserId() {
+        return userId;
     }
 
-    @Temporal(TemporalType.DATE)
-    @Column(name="added_date", nullable=false, length=10)
-    public Date getAddedDate() {
-        return this.addedDate;
+    public void setUserId(Integer userId) {
+        this.userId = userId;
     }
-    
+
+    public Date getAddedDate() {
+        return addedDate;
+    }
+
     public void setAddedDate(Date addedDate) {
         this.addedDate = addedDate;
     }
 
-    
-    @Column(name="file_link", nullable=false, length=45)
     public String getFileLink() {
-        return this.fileLink;
+        return fileLink;
     }
-    
+
     public void setFileLink(String fileLink) {
         this.fileLink = fileLink;
     }
 
-
-
+    
 
 }
 

@@ -61,7 +61,7 @@
                                 <ul class="nav nav-pills nav-stacked">
                                     <li class="active"><a href="#"> <i class="fa fa-user"></i> News feed</a></li>
                                     <li>
-                                        <a href="#"> 
+                                        <a href="messages1"> 
                                             <i class="fa fa-envelope"></i> Messages 
                                             <span class="label label-info pull-right r-activity">9</span>
                                         </a>
@@ -102,7 +102,7 @@
                                         <form:form method="post" action="${action}" commandName="post">
                                             <input class="form-control" type="hidden" name="userId" path="userId" value="${sessionScope.u.userId}">
                                             <input class="form-control" type="hidden" name="userIdTo" path="userIdTo" value="${sessionScope.u.userId}">
-                                            <input class="form-control input-lg p-text-area" name="postTitle" path="postTitle" placeholder="Write Title here"/>
+                                            <!--<input class="form-control input-lg p-text-area" name="postTitle" path="postTitle" placeholder="Write Title here"/>-->
                                             <textarea class="form-control input-lg p-text-area" rows="2" name="postContext" path="postContext" placeholder="Whats in your mind today?"></textarea>
 
                                             <div class="box-footer box-form">
@@ -119,56 +119,70 @@
                                     <!-- end post state form -->
 
                                     <!--   posts -->
-                                    <div class="box box-widget">
-                                        <div class="box-header with-border">
-                                            <div class="user-block">
-                                                <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                                                <span class="username"><a href="#">John Breakgrow jr.</a></span>
-                                                <span class="description">Shared publicly - 7:30 PM Today</span>
-                                            </div>
-                                        </div>
+                                    <c:forEach var="homePosts" items="${sessionScope.homePosts}">
+                                        <div class="box box-widget">
+                                            <div class="box-header with-border">
+                                                <div class="user-block">
+                                                    <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                                        <c:if test="${ppaLst.userId eq homePosts.userId}">
+                                                            <c:set var="ui" value="${ppaLst.userId}" scope="session"></c:set>
+                                                            <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${ppaLst.fileLink}" alt="User Image">
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <c:forEach var="allUsers" items="${sessionScope.allUsers}">
+                                                        <c:if test="${allUsers.userId eq sessionScope.ui}">
+                                                            <span class="username"><a href="#">${allUsers.firstName} ${allUsers.lastName}</a></span>
+                                                        </c:if>
+                                                    </c:forEach>
 
-                                        <div class="box-body" style="display: block;">
-                                            <img class="img-responsive show-in-modal" src="${pageContext.request.contextPath}/resources/img/Post/young-couple-in-love.jpg" alt="Photo">
-                                            <p>I took this photo this morning. What do you guys think?</p>
-                                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                                            <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                                            <span class="pull-right text-muted">127 likes - 3 comments</span>
-                                        </div>
-                                        <div class="box-footer box-comments" style="display: block;">
-                                            <div class="box-comment">
-                                                <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="User Image">
-                                                <div class="comment-text">
-                                                    <span class="username">
-                                                        Maria Gonzales
-                                                        <span class="text-muted pull-right">8:03 PM Today</span>
-                                                    </span>
-                                                    It is a long established fact that a reader will be distracted
-                                                    by the readable content of a page when looking at its layout.
+                                                    <c:set var = "postTime" value = "${fn:substring(homePosts.postTime, 11, 16)}"></c:set>
+                                                    <c:set var = "postDate" value = "${fn:substring(homePosts.postTime, 0, 10)}"></c:set>
+                                                    <span class="description">Shared publicly -&nbsp Time: &nbsp${postTime} &nbsp Date: &nbsp ${postDate}</span>
                                                 </div>
                                             </div>
 
-                                            <div class="box-comment">
-                                                <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                                                <div class="comment-text">
-                                                    <span class="username">
-                                                        Luna Stark
-                                                        <span class="text-muted pull-right">8:03 PM Today</span>
-                                                    </span>
-                                                    It is a long established fact that a reader will be distracted
-                                                    by the readable content of a page when looking at its layout.
+                                            <div class="box-body" style="display: block;">
+                                                <!--<img class="img-responsive show-in-modal" src="${pageContext.request.contextPath}/resources/img/Post/young-couple-in-love.jpg" alt="Photo">-->
+                                                <p>${homePosts.postContext}</p>
+                                                <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
+                                                <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                                                <span class="pull-right text-muted">127 likes - 3 comments</span>
+                                            </div>
+                                            <div class="box-footer box-comments" style="display: block;">
+                                                <div class="box-comment">
+                                                    <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="User Image">
+                                                    <div class="comment-text">
+                                                        <span class="username">
+                                                            Maria Gonzales
+                                                            <span class="text-muted pull-right">8:03 PM Today</span>
+                                                        </span>
+                                                        It is a long established fact that a reader will be distracted
+                                                        by the readable content of a page when looking at its layout.
+                                                    </div>
+                                                </div>
+
+                                                <div class="box-comment">
+                                                    <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
+                                                    <div class="comment-text">
+                                                        <span class="username">
+                                                            Luna Stark
+                                                            <span class="text-muted pull-right">8:03 PM Today</span>
+                                                        </span>
+                                                        It is a long established fact that a reader will be distracted
+                                                        by the readable content of a page when looking at its layout.
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <div class="box-footer" style="display: block;">
+                                                <form action="#" method="post">
+                                                    <img class="img-responsive img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="Alt Text">
+                                                    <div class="img-push">
+                                                        <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                                                    </div>
+                                                </form>
+                                            </div>
                                         </div>
-                                        <div class="box-footer" style="display: block;">
-                                            <form action="#" method="post">
-                                                <img class="img-responsive img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="Alt Text">
-                                                <div class="img-push">
-                                                    <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
-                                                </div>
-                                            </form>
-                                        </div>
-                                    </div><!--  end posts-->
+                                    </c:forEach><!--  end posts-->
 
 
                                     <!-- post -->
@@ -533,7 +547,7 @@
 
                                     <form>
                                         <div class="input-group pull-right" style="width: 450px">
-                                            <input id="search" type="text" class="form-control" placeholder="Search">
+                                            <input id="search" type="text" class="form-control" placeholder="Search" name="search">
                                             <div class="input-group-btn">
                                                 <button class="btn btn-default btn-default" type="submit">
                                                     <i class="glyphicon glyphicon-search "></i>
@@ -542,6 +556,17 @@
                                         </div>
                                     </form>
                                 </div>
+                            </div>
+                            <div class="content-list" id="list2">
+                                <ul class="drop-list">
+                                    <c:forEach var="allUsers" items="${sessionScope.allUsers}">
+                                        <%--<c:if test="${allUsers.userId eq sessionScope.ui}">--%>
+                                            <li>
+                                               <span class="username"><a href="/SocialNetworking/showProfile${allUsers.userId}">${allUsers.firstName} ${allUsers.lastName}</a></span>
+                                            </li>
+                                        <%--</c:if>--%>
+                                    </c:forEach>
+                                </ul>
                             </div>
                             <div class="content-list" id="list">
                                 <ul class="drop-list">
@@ -659,7 +684,13 @@
                                 </div>
                             </div>
                         </li>
-                        <li class="actives"><a href="profile">Profile</a></li>
+                        <li class="actives"><a href="profile" style="margin-top:12px">
+                                <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                    <c:if test="${ppaLst.userId eq sessionScope.u.userId}">
+                                        <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.ppa.fileLink}" style="width: 30px; height: 30px" alt="User Image">
+                                    </c:if>
+                                </c:forEach>
+                                ${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></li>
                         <li><a href="home">Home</a></li>
                         <li>
                             <div class="dropdown">
@@ -676,7 +707,7 @@
                             </div>
                         </li>
 
-                        <li><a href="" target="_self" class="nav-controller"><i class="fa fa-user"></i></a></li>
+                        <!--<li><a href="" target="_self" class="nav-controller"><i class="fa fa-user"></i></a></li>-->
                     </ul>
                 </div>
             </div>
@@ -791,20 +822,20 @@
             ga('linker:autoLink', ['bootdey.com', 'www.bootdey.com', 'demos.bootdey.com']);
             ga('send', 'pageview');
 
-            $('#list').hide();
+            $('#list2').hide();
 
             $('#search').click(function (event) {
 
                 event.stopPropagation();
 
 
-                $("#list").fadeIn("fast");
+                $("#list2").fadeIn("fast");
 
             });
 
             $(document).click(function () {
 
-                $('#list').hide();
+                $('#list2').hide();
 
             });
         </script>

@@ -1,4 +1,8 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -42,54 +46,17 @@
         <div class="row">
           <div class="col-md-12">
             <div class="cover profile">
-              <div class="wrapper">
-                <div class="image">
-                  <img src="${pageContext.request.contextPath}/resources/img/Cover/profile-cover.jpg" class="show-in-modal" alt="people">
-                </div>
-                <ul class="friends">
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-9.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-9.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-4.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-1.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#">
-                      <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="people" class="img-responsive">
-                    </a>
-                  </li>
-                  <li><a href="#" class="group"><i class="fa fa-group"></i></a></li>
-                </ul>
-              </div>
+              <div class="wrapper" style="width:885px">
+                                <!--<div class="image">-->
+                                <c:forEach var="coverList" items="${sessionScope.coverList}">
+                                    <c:if test="${coverList.userId eq sessionScope.u.userId}">
+                                        <img style="width:885px" src="${pageContext.request.contextPath}/resources/img/Cover/${coverList.fileLink}" class="show-in-modal" alt="people">                                        
+                                    </c:if>
+                                </c:forEach>
+
+                                <!--</div>-->
+
+                            </div>
               <div class="cover-info">
                 <div class="avatar">
                   <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.ppa.fileLink}" alt="people">

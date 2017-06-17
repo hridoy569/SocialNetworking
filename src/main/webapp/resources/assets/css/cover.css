@@ -16,6 +16,7 @@
   position: relative;
   overflow: hidden;
   max-height: 250px;
+  width: 833px;
   border-bottom: 1px solid #e2e9e6;
 }
 .cover.profile .wrapper .friends {

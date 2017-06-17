@@ -5,6 +5,7 @@
  */
 package com.social.controller;
 
+import com.social.entity.CoverPhotoAlbum;
 import com.social.entity.FriendRequest;
 import com.social.entity.Post;
 import com.social.entity.ProfilePhotoAlbum;
@@ -90,6 +91,18 @@ public class LoginController {
             System.out.println("All Users Photo: " + ppa2.getUserId() + " " + ppa2.getFileLink());
         }
         session.setAttribute("ppaList", cList4);
+        
+        // for all Cover pictures
+        Session session41 = sessionFactory.getCurrentSession();
+        Query query41 = session41.createQuery("FROM CoverPhotoAlbum");
+
+        List<CoverPhotoAlbum> cList41 = query41.list();
+        cList41.toString();
+        for (CoverPhotoAlbum ppa2 : cList41) {
+            System.out.println("All Cover Photo: " + ppa2.getUserId()+ " " + ppa2.getFileLink());
+        }
+        
+        session.setAttribute("coverList", cList41);
 
         // for user's posts
         Session session5 = sessionFactory.getCurrentSession();
@@ -180,6 +193,13 @@ public class LoginController {
         }
         session.setAttribute("auList", cList3);
         
+        // for all users
+        Session session32 = sessionFactory.getCurrentSession();
+        Query query32 = session32.createQuery("from  Users");
+
+        List<Users> cList32 = query32.list();
+        cList32.toString();
+        session.setAttribute("allUsers", cList32);
         
 
         //get friend id
@@ -203,6 +223,33 @@ public class LoginController {
         List<FriendRequest> newList2 = Stream.concat(cList10.stream(), cList102.stream()).collect(Collectors.toList());
         
         session.setAttribute("getFriendsId", newList2);
+        
+        //get friends posts
+        Session session83 = sessionFactory.getCurrentSession();
+        Query query83 = session83.createQuery("from  Post  where userId in (select userId from FriendRequest where userIdTo=:userIdTo and status=:status) order by postTime desc");
+
+        query83.setInteger("userIdTo", user.getUserId());
+        query83.setInteger("status", 2);
+
+        List<Post> cList83 = query83.list();
+        cList83.toString();
+        
+        
+        //get friends2 posts
+        Session session823 = sessionFactory.getCurrentSession();
+        Query query823 = session823.createQuery("from  Post  where userId in (select userIdTo from FriendRequest where userId=:userId and status=:status) order by postTime desc");
+
+        query823.setInteger("userId", user.getUserId());
+        query823.setInteger("status", 2);
+
+        List<Post> cList823 = query823.list();
+        cList823.toString();
+        
+        List<Post> newList3 = Stream.concat(cList83.stream(), cList823.stream()).collect(Collectors.toList());
+        
+        List<Post> homePosts = Stream.concat(cList5.stream(), newList3.stream()).collect(Collectors.toList());
+        
+        session.setAttribute("homePosts", homePosts);
 
         return new ModelAndView("home", "user-entity", user);
     }

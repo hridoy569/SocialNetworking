@@ -1,4 +1,8 @@
-
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1" pageEncoding="ISO-8859-1" %>
+<%@taglib uri="http://www.springframework.org/tags" prefix="spring" %>
+<%@taglib uri="http://www.springframework.org/tags/form" prefix="form"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri = "http://java.sun.com/jsp/jstl/functions" prefix = "fn" %>
 <!DOCTYPE html>
 <html lang="en">
   
@@ -16,13 +20,13 @@
     <link href="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/font-awesome.4.6.1/css/font-awesome.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/animate.min.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/assets/css/edit_profile.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/assets/css/user_detail.css" rel="stylesheet">
+<!--        <link href="${pageContext.request.contextPath}/resources/assets/css/edit_profile.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/resources/assets/css/user_detail.css" rel="stylesheet">-->
         <link href="${pageContext.request.contextPath}/resources/assets/css/file_manager.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/assets/css/friends.css" rel="stylesheet">
+<!--        <link href="${pageContext.request.contextPath}/resources/assets/css/friends.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/grid_posts.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/people_directory.css" rel="stylesheet">
-        <link href="${pageContext.request.contextPath}/resources/assets/css/photos1.css" rel="stylesheet">
+        <link href="${pageContext.request.contextPath}/resources/assets/css/photos1.css" rel="stylesheet">-->
         <link href="${pageContext.request.contextPath}/resources/assets/css/timeline.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/cover.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/assets/css/forms.css" rel="stylesheet">
@@ -31,7 +35,12 @@
         <link href="${pageContext.request.contextPath}/resources/assets/css/mysearchbar.css" rel="stylesheet">
         <script src="${pageContext.request.contextPath}/resources/assets/js/jquery.1.11.1.min.js"></script>
         <script src="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/js/bootstrap.min.js"></script>
-    
+    <style>
+
+            .t{
+                padding-left: 10px;
+            }
+        </style>
     
    
   </head>
@@ -360,7 +369,67 @@
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-right">
-                        <li class="actives"><a href="profile">Profile</a></li>
+                        <li>
+                            <div class="dropdown">
+                                <button class="dropbtn"><i class="fa fa-user-plus"></i><span style="color: red; font-weight: bold"> ${fn:length(sessionScope.getRequests)}</span></button>
+                                <div class="dropdown-content">
+                                    <c:forEach var="getRequests" items="${sessionScope.getRequests}">
+                                        <a href="#">
+                                            <div>
+                                                <table>
+                                                    <c:forEach var="grId2" items="${sessionScope.getRequestsId}">
+                                                        <c:if test="${grId2.userId eq getRequests.userId}">
+                                                            <c:set var="getReqId2" value="${grId2.friendRequstId}" scope="session"></c:set>
+                                                            <c:set var="getReqFrom" value="${getRequests.userId}" scope="session"></c:set>
+                                                        </c:if>
+                                                    </c:forEach>
+                                                    <tr style="height: 60px; width: 350px">
+                                                        <td>
+                                                            <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
+                                                                <c:if test="${profilePhoto.userId eq getRequests.userId}">
+                                                                    <a class="pull-left" href="#">
+                                                                        <img class="thumb media-object" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${profilePhoto.fileLink}" alt="" width="50px" height="50px">
+                                                                    </a>
+                                                                </c:if>
+                                                            </c:forEach>
+                                                        </td> 
+                                                        <td class="t">${getRequests.firstName}</td><td style="padding-left: 5px">${getRequests.lastName}</td>
+                                                        <td class="t">
+                                                            <form:form commandName="fr" action="acceptRequestHome" method="post">
+                                                                <input type="hidden" name="friendRequstId" path="friendRequstId" value="${sessionScope.getReqId2}">
+                                                                <input type="hidden" name="userId" path="usersByUserId" value="${sessionScope.getReqFrom}">
+                                                                <input type="hidden" name="userIdTo" path="usersByUserIdTo" value="${sessionScope.u.userId}">
+                                                                <input type="hidden" name="status" path="status" value="2">
+                                                                <input style="margin-top: 0" type="submit" value="Accept" class="btn btn-azure pull-right">
+                                                            </form:form>
+                                                        </td>
+
+                                                        <td class="t">
+
+                                                            <form:form commandName="fr" action="rejectRequestHome" method="post">
+                                                                <input type="hidden" name="friendRequstId" path="friendRequstId" value="${sessionScope.getReqId2}">
+                                                                <input type="hidden" name="userId" path="usersByUserId" value="${sessionScope.getReqFrom}">
+                                                                <input type="hidden" name="userIdTo" path="usersByUserIdTo" value="${sessionScope.u.userId}">
+                                                                <input type="hidden" name="status" path="status" value="0">
+                                                                <input type="submit" value="Reject" class="btn btn-danger pull-right">
+                                                            </form:form> 
+                                                        </td>
+                                                    </tr>
+                                                </table>
+                                            </div>
+                                        </a>
+                                    </c:forEach>
+
+                                </div>
+                            </div>
+                        </li>
+                        <li class="actives"><a href="profile" style="margin-top:12px">
+                                <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                    <c:if test="${ppaLst.userId eq sessionScope.u.userId}">
+                                        <img class="img-circle" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.ppa.fileLink}" style="width: 30px; height: 30px" alt="User Image">
+                                    </c:if>
+                                </c:forEach>
+                                ${sessionScope.u.firstName} ${sessionScope.u.lastName}</a></li>
                         <li><a href="home">Home</a></li>
                         <li>
                             <div class="dropdown">
@@ -376,8 +445,8 @@
                                 </div>
                             </div>
                         </li>
-                        
-                        <li><a href="" target="_self" class="nav-controller"><i class="fa fa-user"></i></a></li>
+
+                        <!--<li><a href="" target="_self" class="nav-controller"><i class="fa fa-user"></i></a></li>-->
                     </ul>
                 </div>
             </div>
