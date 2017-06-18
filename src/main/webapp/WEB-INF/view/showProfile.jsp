@@ -48,54 +48,17 @@
       <div class="row">
         <div class="col-md-12">
           <div class="cover profile">
-            <div class="wrapper">
-              <div class="image">
-                <img src="${pageContext.request.contextPath}/resources/img/Cover/profile-cover.jpg" class="show-in-modal" alt="people">
-              </div>
-              <ul class="friends">
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-9.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-9.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-4.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-1.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="people" class="img-responsive">
-                  </a>
-                </li>
-                <li><a href="#" class="group"><i class="fa fa-group"></i></a></li>
-              </ul>
-            </div>
+            <div class="wrapper" style="width:885px">
+                                <!--<div class="image">-->
+                                <c:forEach var="coverList" items="${sessionScope.coverList}">
+                                    <c:if test="${coverList.userId eq sessionScope.targetUser.userId}">
+                                        <img style="width:885px" src="${pageContext.request.contextPath}/resources/img/Cover/${coverList.fileLink}" class="show-in-modal" alt="people">                                        
+                                    </c:if>
+                                </c:forEach>
+
+                                <!--</div>-->
+
+                            </div>
             <div class="cover-info">
               <div class="avatar">
                 <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${sessionScope.targetUserPP.fileLink}" alt="people">
@@ -164,12 +127,19 @@
               <div class="row">
                 <div class="col-md-12">
                   <ul class="img-grid" style="margin: 0 auto;">
-                    <li>
-                      <a href="#">
-                        <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="image">
-                      </a>
-                    </li>
-                    <li>
+                    <c:forEach var="getFriends" items="${sessionScope.getFriends}">
+                                                <c:forEach var="profilePhoto" items="${sessionScope.ppaList}">
+                                                    <c:if test="${profilePhoto.userId eq getFriends.userId}">
+                                                        <li>
+                                                            <a href="/SocialNetworking/showProfile${getFriends.userId}">
+                                                                <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${profilePhoto.fileLink}" alt="people" class="img-responsive">
+                                                            </a>
+                                                        </li>                                        
+                                                    </c:if>
+                                                </c:forEach>
+
+                                            </c:forEach>
+<!--                    <li>
                       <a href="#">
                         <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="image">
                       </a>
@@ -208,7 +178,7 @@
                       <a href="#">
                         <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-6.jpg" alt="image">
                       </a>
-                    </li>
+                    </li>-->
                   </ul>
                 </div>
               </div>

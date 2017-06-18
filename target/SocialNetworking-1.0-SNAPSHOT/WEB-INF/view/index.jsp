@@ -80,7 +80,7 @@
                                             <div class="clearfix"></div>
                                         </div>
                                         <div class="center">
-                                            <a href="home" class="btn  btn-azure">Login</a>
+                                            <!--<a href="home" class="btn  btn-azure">Login</a>-->
                                             <input class="btn btn-azure" type="submit" value="Sign in">
                                         </div>
                                         <table align="center">
