@@ -332,12 +332,12 @@
                         <div class="dropdown">
                             <button class="dropbtn">Settings</button>
                             <div class="dropdown-content">
-                                <a href="user_detail">User detail</a>
+                                <!--<a href="user_detail">User detail</a>-->
                                 <a href="edit_profile">Edit profile</a>
                                 <a href="list_users">List users</a>
-                                <a href="file_manager">File manager</a>
+                                <!--<a href="file_manager">File manager</a>-->
                                 <a href="people_directory">People directory</a>
-                                <a href="grid_posts">Grid posts</a>
+                                <!--<a href="grid_posts">Grid posts</a>-->
                                 <a href="/SocialNetworking/logout">Log Out</a>
                             </div>
                         </div>

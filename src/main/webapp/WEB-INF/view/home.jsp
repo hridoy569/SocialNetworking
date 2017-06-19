@@ -144,42 +144,77 @@
                                             <div class="box-body" style="display: block;">
                                                 <!--<img class="img-responsive show-in-modal" src="${pageContext.request.contextPath}/resources/img/Post/young-couple-in-love.jpg" alt="Photo">-->
                                                 <p>${homePosts.postContext}</p>
-                                                <button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>
-                                                <button type="button" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
-                                                <span class="pull-right text-muted">127 likes - 3 comments</span>
+                                                <!--<button type="button" class="btn btn-default btn-xs"><i class="fa fa-share"></i> Share</button>-->
+                                                <c:forEach var="LikeStatus" items="${sessionScope.LikeStatus}">
+                                                    <c:if test="${LikeStatus.postId eq homePosts.postId}">
+                                                        <c:if test="${LikeStatus.userId eq sessionScope.u.userId}">
+                                                    <c:choose>
+                                                        <c:when test="${LikeStatus.status eq 1}">
+                                                            <form:form action="homePostLikeUpdate" method="post">
+                                                                <input class="form-control" type="hidden" name="userId" path="userId" value="${sessionScope.u.userId}">
+                                                                <input class="form-control" type="hidden" name="postId" path="postId" value="${homePosts.postId}">
+                                                                <input class="form-control" type="hidden" name="status" path="postId" value="0">
+                                                                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Unlike</button>
+                                                            </form:form>
+                                                        </c:when>
+                                                        <c:otherwise>
+                                                            <form:form action="homePostLike" method="post">
+                                                                <input class="form-control" type="hidden" name="userId" path="userId" value="${sessionScope.u.userId}">
+                                                                <input class="form-control" type="hidden" name="postId" path="postId" value="${homePosts.postId}">
+                                                                <input class="form-control" type="hidden" name="status" path="postId" value="1">
+                                                                <button type="submit" class="btn btn-default btn-xs"><i class="fa fa-thumbs-o-up"></i> Like</button>
+                                                            </form:form>
+
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                                    </c:if>
+                                                    </c:if>
+                                                </c:forEach>
+                                                        <c:forEach var="totalLike" items="${sessionScope.totalLike}">  
+                                                <span class="pull-right text-muted">1 likes - 3 comments</span></c:forEach> 
                                             </div>
                                             <div class="box-footer box-comments" style="display: block;">
-                                                <div class="box-comment">
-                                                    <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="User Image">
-                                                    <div class="comment-text">
-                                                        <span class="username">
-                                                            Maria Gonzales
-                                                            <span class="text-muted pull-right">8:03 PM Today</span>
-                                                        </span>
-                                                        It is a long established fact that a reader will be distracted
-                                                        by the readable content of a page when looking at its layout.
-                                                    </div>
-                                                </div>
+                                                <c:forEach var="commentsList" items="${sessionScope.commentsList}">
+                                                    <c:choose>
+                                                        <c:when test="${commentsList.postId eq homePosts.postId}">
+                                                            <div class="box-comment">
+                                                                <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                                                    <c:if test="${ppaLst.userId eq commentsList.userId}">
+                                                                        <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${ppaLst.fileLink}" alt="User Image">
+                                                                    </c:if>
+                                                                </c:forEach>
+                                                                <div class="comment-text">
+                                                                    <span class="username">
+                                                                        <c:forEach var="allUsers" items="${sessionScope.allUsers}">
+                                                                            <c:if test="${allUsers.userId eq commentsList.userId}">
+                                                                                ${allUsers.firstName} ${allUsers.lastName}
+                                                                            </c:if>
+                                                                        </c:forEach>
+                                                                        <span class="text-muted pull-right">1:30 PM Today</span>
+                                                                    </span>
+                                                                    ${commentsList.commentContent} 
+                                                                </div>
+                                                            </div>
+                                                        </c:when>
+                                                        <c:otherwise>
 
-                                                <div class="box-comment">
-                                                    <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="User Image">
-                                                    <div class="comment-text">
-                                                        <span class="username">
-                                                            Luna Stark
-                                                            <span class="text-muted pull-right">8:03 PM Today</span>
-                                                        </span>
-                                                        It is a long established fact that a reader will be distracted
-                                                        by the readable content of a page when looking at its layout.
-                                                    </div>
-                                                </div>
+                                                        </c:otherwise>
+                                                    </c:choose>
+                                                </c:forEach>
                                             </div>
                                             <div class="box-footer" style="display: block;">
-                                                <form action="#" method="post">
-                                                    <img class="img-responsive img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="Alt Text">
+                                                <form:form action="homeCommentAdd" method="post">
+                                                    <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                                        <c:if test="${ppaLst.userId eq sessionScope.u.userId}">
+                                                            <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${ppaLst.fileLink}" alt="User Image">
+                                                        </c:if>
+                                                    </c:forEach>
                                                     <div class="img-push">
-                                                        <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
+                                                        <input class="form-control" type="hidden" name="userId" path="userId" value="${sessionScope.u.userId}">
+                                                        <input class="form-control" type="hidden" name="postId" path="postId" value="${homePosts.postId}">
+                                                        <input type="text" class="form-control input-sm" name="commentContent" placeholder="Press enter to post comment">
                                                     </div>
-                                                </form>
+                                                </form:form>
                                             </div>
                                         </div>
                                     </c:forEach><!--  end posts-->
@@ -561,9 +596,9 @@
                                 <ul class="drop-list">
                                     <c:forEach var="allUsers" items="${sessionScope.allUsers}">
                                         <%--<c:if test="${allUsers.userId eq sessionScope.ui}">--%>
-                                            <li>
-                                               <span class="username"><a href="/SocialNetworking/showProfile${allUsers.userId}">${allUsers.firstName} ${allUsers.lastName}</a></span>
-                                            </li>
+                                        <li>
+                                            <span class="username"><a href="/SocialNetworking/showProfile${allUsers.userId}">${allUsers.firstName} ${allUsers.lastName}</a></span>
+                                        </li>
                                         <%--</c:if>--%>
                                     </c:forEach>
                                 </ul>
@@ -696,12 +731,12 @@
                             <div class="dropdown">
                                 <button class="dropbtn">Settings</button>
                                 <div class="dropdown-content">
-                                    <a href="user_detail">User detail</a>
+                                    <!--<a href="user_detail">User detail</a>-->
                                     <a href="edit_profile">Edit profile</a>
                                     <a href="list_users">List users</a>
-                                    <a href="file_manager">File manager</a>
+                                    <!--<a href="file_manager">File manager</a>-->
                                     <a href="people_directory">People directory</a>
-                                    <a href="grid_posts">Grid posts</a>
+                                    <!--<a href="grid_posts">Grid posts</a>-->
                                     <a href="/SocialNetworking/logout">Log Out</a>
                                 </div>
                             </div>

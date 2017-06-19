@@ -5,16 +5,15 @@
  */
 package com.social.controller;
 
+import com.social.entity.Comment;
 import com.social.entity.CoverPhotoAlbum;
 import com.social.entity.FriendRequest;
 import com.social.entity.Post;
+import com.social.entity.PostLikes;
 import com.social.entity.ProfilePhotoAlbum;
 import com.social.entity.Users;
 import com.social.service.IUsersService;
-import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 import javax.servlet.http.HttpServletRequest;
@@ -250,6 +249,33 @@ public class LoginController {
         List<Post> homePosts = Stream.concat(cList5.stream(), newList3.stream()).collect(Collectors.toList());
         
         session.setAttribute("homePosts", homePosts);
+        
+        // get comments
+        Session session61 = sessionFactory.getCurrentSession();
+        Query query61 = session61.createQuery("FROM Comment");
+       
+        List<Comment> commentsList = query61.list();
+        commentsList.toString();
+
+        session.setAttribute("commentsList", commentsList);
+        
+        //like status
+        
+        Session session26 = sessionFactory.getCurrentSession();
+        Query query26 = session26.createQuery("FROM PostLikes");
+        
+        List<PostLikes> status26 = query26.list();
+        status26.toString();
+        
+        session.setAttribute("LikeStatus", status26);
+        
+        Session session261 = sessionFactory.getCurrentSession();
+        Query query261 = session261.createQuery("FROM PostLikes where status=:status");
+        query261.setInteger("status", 1);
+        List<PostLikes> status261 = query261.list();
+        status261.toString();
+        
+        session.setAttribute("totalLike", status261);
 
         return new ModelAndView("home", "user-entity", user);
     }

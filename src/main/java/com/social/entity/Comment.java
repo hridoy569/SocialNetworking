@@ -27,106 +27,83 @@ import javax.persistence.TemporalType;
 )
 public class Comment  implements java.io.Serializable {
 
-
-     private Long commentId;
-     private Post post;
-     private Users users;
+    @Id @GeneratedValue(strategy=IDENTITY)
+    @Column(name="comment_id", unique=true, nullable=false)
+     private Integer commentId;
+     @Column(name = "post_id", nullable = false)
+     private Integer postId;
+     @Column(name = "user_id", nullable = false)
+     private Integer userId;
+     @Column(name="comment_time", nullable=false, length=19)
      private Date commentTime;
+     @Column(name="comment_content", nullable=false)
      private String commentContent;
+     @Column(name="comment_parent_id", nullable=false)
      private int commentParentId;
-     private Set<CommentLikes> commentLikeses = new HashSet<CommentLikes>(0);
 
     public Comment() {
     }
 
-	
-    public Comment(Post post, Users users, Date commentTime, String commentContent, int commentParentId) {
-        this.post = post;
-        this.users = users;
+    public Comment(Integer postId, Integer userId, Date commentTime, String commentContent, int commentParentId) {
+        this.postId = postId;
+        this.userId = userId;
         this.commentTime = commentTime;
         this.commentContent = commentContent;
         this.commentParentId = commentParentId;
     }
-    public Comment(Post post, Users users, Date commentTime, String commentContent, int commentParentId, Set<CommentLikes> commentLikeses) {
-       this.post = post;
-       this.users = users;
-       this.commentTime = commentTime;
-       this.commentContent = commentContent;
-       this.commentParentId = commentParentId;
-       this.commentLikeses = commentLikeses;
-    }
-   
-     @Id @GeneratedValue(strategy=IDENTITY)
 
-    
-    @Column(name="comment_id", unique=true, nullable=false)
-    public Long getCommentId() {
-        return this.commentId;
+    public Integer getCommentId() {
+        return commentId;
     }
-    
-    public void setCommentId(Long commentId) {
+
+    public void setCommentId(Integer commentId) {
         this.commentId = commentId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="post_id", nullable=false)
-    public Post getPost() {
-        return this.post;
-    }
-    
-    public void setPost(Post post) {
-        this.post = post;
+    public Integer getPostId() {
+        return postId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable=false)
-    public Users getUsers() {
-        return this.users;
-    }
-    
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
-    @Temporal(TemporalType.TIMESTAMP)
-    @Column(name="comment_time", nullable=false, length=19)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public Date getCommentTime() {
-        return this.commentTime;
+        return commentTime;
     }
-    
+
     public void setCommentTime(Date commentTime) {
         this.commentTime = commentTime;
     }
 
-    
-    @Column(name="comment_content", nullable=false)
     public String getCommentContent() {
-        return this.commentContent;
+        return commentContent;
     }
-    
+
     public void setCommentContent(String commentContent) {
         this.commentContent = commentContent;
     }
 
-    
-    @Column(name="comment_parent_id", nullable=false)
     public int getCommentParentId() {
-        return this.commentParentId;
+        return commentParentId;
     }
-    
+
     public void setCommentParentId(int commentParentId) {
         this.commentParentId = commentParentId;
     }
 
-@OneToMany(fetch=FetchType.LAZY, mappedBy="comment")
-    public Set<CommentLikes> getCommentLikeses() {
-        return this.commentLikeses;
-    }
     
-    public void setCommentLikeses(Set<CommentLikes> commentLikeses) {
-        this.commentLikeses = commentLikeses;
-    }
 
+	
+    
 
 
 

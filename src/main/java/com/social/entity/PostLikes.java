@@ -21,65 +21,67 @@ import javax.persistence.Table;
 )
 public class PostLikes  implements java.io.Serializable {
 
-
-     private Long postLikesId;
-     private Post post;
-     private Users users;
+     @Id @GeneratedValue(strategy=IDENTITY)
+     @Column(name="post_likes_id", unique=true, nullable=false)
+     private Integer postLikesId;
+     @Column(name = "post_id", nullable = false)
+     private Integer postId;
+     @Column(name = "user_id", nullable = false)
+     private Integer userId;
+     @Column(name="status", nullable=false)
      private int status;
 
     public PostLikes() {
     }
 
-    public PostLikes(Post post, Users users, int status) {
-       this.post = post;
-       this.users = users;
-       this.status = status;
+    public PostLikes(Integer postLikesId, Integer postId, Integer userId, int status) {
+        this.postLikesId = postLikesId;
+        this.postId = postId;
+        this.userId = userId;
+        this.status = status;
     }
-   
-     @Id @GeneratedValue(strategy=IDENTITY)
+    
 
-    
-    @Column(name="post_likes_id", unique=true, nullable=false)
-    public Long getPostLikesId() {
-        return this.postLikesId;
+    public PostLikes(Integer postId, Integer userId, int status) {
+        this.postId = postId;
+        this.userId = userId;
+        this.status = status;
     }
-    
-    public void setPostLikesId(Long postLikesId) {
+
+    public Integer getPostLikesId() {
+        return postLikesId;
+    }
+
+    public void setPostLikesId(Integer postLikesId) {
         this.postLikesId = postLikesId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="post_id", nullable=false)
-    public Post getPost() {
-        return this.post;
-    }
-    
-    public void setPost(Post post) {
-        this.post = post;
+    public Integer getPostId() {
+        return postId;
     }
 
-@ManyToOne(fetch=FetchType.LAZY)
-    @JoinColumn(name="user_id", nullable=false)
-    public Users getUsers() {
-        return this.users;
-    }
-    
-    public void setUsers(Users users) {
-        this.users = users;
+    public void setPostId(Integer postId) {
+        this.postId = postId;
     }
 
-    
-    @Column(name="status", nullable=false)
+    public Integer getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Integer userId) {
+        this.userId = userId;
+    }
+
     public int getStatus() {
-        return this.status;
+        return status;
     }
-    
+
     public void setStatus(int status) {
         this.status = status;
     }
 
-
-
+    
+    
 
 }
 

@@ -348,8 +348,11 @@
                                                 </div>
                                                 <div class="box-footer" style="display: block;">
                                                     <form action="#" method="post">
-                                                        <img class="img-responsive img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/Friends/guy-3.jpg" alt="Alt Text">
-                                                        <div class="img-push">
+                                                        <c:forEach var="ppaLst" items="${sessionScope.ppaList}">
+                                                            <c:if test="${ppaLst.userId eq sessionScope.u.userId}">
+                                                                <img class="img-circle img-sm" src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/${ppaLst.fileLink}" alt="User Image">
+                                                            </c:if>
+                                                        </c:forEach>                                                        <div class="img-push">
                                                             <input type="text" class="form-control input-sm" placeholder="Press enter to post comment">
                                                         </div>
                                                     </form>
@@ -725,12 +728,12 @@
                             <div class="dropdown">
                                 <button class="dropbtn">Settings</button>
                                 <div class="dropdown-content">
-                                    <a href="user_detail">User detail</a>
+                                    <!--<a href="user_detail">User detail</a>-->
                                     <a href="edit_profile">Edit profile</a>
                                     <a href="list_users">List users</a>
-                                    <a href="file_manager">File manager</a>
+                                    <!--<a href="file_manager">File manager</a>-->
                                     <a href="people_directory">People directory</a>
-                                    <a href="grid_posts">Grid posts</a>
+                                    <!--<a href="grid_posts">Grid posts</a>-->
                                     <a href="/SocialNetworking/logout">Log Out</a>
                                 </div>
                             </div>
