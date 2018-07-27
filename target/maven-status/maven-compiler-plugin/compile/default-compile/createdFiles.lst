@@ -23,6 +23,7 @@ com\social\dao\PostDao.class
 com\social\entity\ProfilePhotoAlbum.class
 com\social\entity\Post.class
 com\social\service\UsersService.class
+com\social\controller\PostLikeCtrl.class
 com\social\entity\Photo.class
 com\social\entity\UserProfile.class
 com\social\entity\Comment.class
@@ -35,6 +36,7 @@ com\social\dao\PhotoAlbumDao.class
 com\social\service\PhotoAlbumServiceInterface.class
 com\social\service\ProfilePhotoAlbumServiceInterface.class
 com\social\controller\UsersController.class
+com\social\controller\CommentCtrl.class
 com\social\entity\PhotoAlbum.class
 com\social\entity\PostLikes.class
 com\social\entity\Share.class

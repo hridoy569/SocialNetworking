@@ -14,8 +14,8 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
-        <link rel="icon" href="${pageContext.request.contextPath}/resources/img/favicon.png">
-        <title>Day-Day</title>
+        <link rel="icon" href="${pageContext.request.contextPath}/resources/img/365favicon.png">
+        <title>EveryDay</title>
         <!--Bootstrap core CSS--> 
         <link href="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/font-awesome.4.6.1/css/font-awesome.min.css" rel="stylesheet">
@@ -434,11 +434,25 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-2.jpg" alt="img" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/nila.jpg" alt="img" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-9">
-                                                    <b><a href="#">Hillary Markston</a></b> shared a 
+                                                    <b><a href="#">Nusrat Nila</a></b> shared a 
+                                                    <b><a href="#">post</a></b>. 
+                                                    <span class="timeago" >5 min ago</span>
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="row">
+                                                <div class="col-xs-3">
+                                                    <div class="avatar">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/bari.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                    </div>
+                                                </div>
+                                                <div class="col-xs-9">
+                                                    <b><a href="#">Abdul Bari</a></b> shared a 
                                                     <b><a href="#">publication</a></b>. 
                                                     <span class="timeago" >5 min ago</span>
                                                 </div>
@@ -448,12 +462,12 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-3.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/arefin.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-9">
-                                                    <b><a href="#">Leidy marshel</a></b> shared a 
-                                                    <b><a href="#">publication</a></b>. 
+                                                    <b><a href="#">Arefin Hossain</a></b> shared a 
+                                                    <b><a href="#">video</a></b>. 
                                                     <span class="timeago" >5 min ago</span>
                                                 </div>
                                             </div>
@@ -462,26 +476,12 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/nazrul.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-9">
-                                                    <b><a href="#">Presilla bo</a></b> shared a 
-                                                    <b><a href="#">publication</a></b>. 
-                                                    <span class="timeago" >5 min ago</span>
-                                                </div>
-                                            </div>
-                                        </li>
-                                        <li>
-                                            <div class="row">
-                                                <div class="col-xs-3">
-                                                    <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-4.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
-                                                    </div>
-                                                </div>
-                                                <div class="col-xs-9">
-                                                    <b><a href="#">Martha markguy</a></b> shared a 
-                                                    <b><a href="#">publication</a></b>. 
+                                                    <b><a href="#">Nazrul Islam</a></b> shared a 
+                                                    <b><a href="#">picture</a></b>. 
                                                     <span class="timeago" >5 min ago</span>
                                                 </div>
                                             </div>
@@ -506,11 +506,11 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/guy-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/emran.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    Carlos marthur
+                                                    Emran Hossain
                                                 </div>
 
                                                 <div class="col-xs-3 text-right">
@@ -522,11 +522,11 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-1.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/ibrahim.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    Maria gustami
+                                                    Ibrahim Sheikh
                                                 </div>
 
                                                 <div class="col-xs-3 text-right">
@@ -538,11 +538,11 @@
                                             <div class="row">
                                                 <div class="col-xs-3">
                                                     <div class="avatar">
-                                                        <img src="${pageContext.request.contextPath}/resources/img/Friends/woman-2.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
+                                                        <img src="${pageContext.request.contextPath}/resources/img/ProfilePhotoAlbum/tarekh.jpg" alt="Circle Image" class="img-circle img-no-padding img-responsive">
                                                     </div>
                                                 </div>
                                                 <div class="col-xs-6">
-                                                    Angellina mcblown
+                                                    Tarek Mahadi
                                                 </div>
 
                                                 <div class="col-xs-3 text-right">
@@ -571,7 +571,7 @@
                         <span class="icon-bar"></span>
                     </button>
                     <ul style="list-style-type: none; margin: 0; padding: 0; overflow: hidden;">
-                        <li style="float: left;"><a class="navbar-brand" href="#"><b>DayDay</b></a></li>
+                        <li style="float: left;"><a class="navbar-brand" href="#"><b>EveryDay</b></a></li>
                         <li style="float: left;">
                             <div style="margin-top: 18px">
                                 <div class="inner">
@@ -840,22 +840,6 @@
             </div>
         </footer>
         <script type="text/javascript">
-            (function (i, s, o, g, r, a, m) {
-                i['GoogleAnalyticsObject'] = r;
-                i[r] = i[r] || function () {
-                    (i[r].q = i[r].q || []).push(arguments)
-                }, i[r].l = 1 * new Date();
-                a = s.createElement(o),
-                        m = s.getElementsByTagName(o)[0];
-                a.async = 1;
-                a.src = g;
-                m.parentNode.insertBefore(a, m)
-            })(window, document, 'script', '../../www.google-analytics.com/analytics.js', 'ga');
-
-            ga('create', 'UA-49755460-1', 'auto', {'allowLinker': true});
-            ga('require', 'linker');
-            ga('linker:autoLink', ['bootdey.com', 'www.bootdey.com', 'demos.bootdey.com']);
-            ga('send', 'pageview');
 
             $('#list2').hide();
 
@@ -876,5 +860,4 @@
         </script>
     </body>
 
-    <!-- Mirrored from demos.bootdey.com/dayday/home.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2017 11:24:14 GMT -->
-    <!--</html>-->
+    </html>

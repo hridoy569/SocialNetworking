@@ -5,7 +5,6 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <html lang="en">
 
-    <!-- Mirrored from demos.bootdey.com/dayday/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2017 11:22:54 GMT -->
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -14,8 +13,8 @@
         <meta name="description" content="">
         <meta name="keywords" content="">
         <meta name="author" content="">
-        <link rel="icon" href="img/favicon.png">
-        <title>DayDay</title>
+        <link rel="icon" href="${pageContext.request.contextPath}/resources/img/365favicon.png">
+        <title>EveryDay</title>
         <!-- Bootstrap core CSS -->
         <link href="${pageContext.request.contextPath}/resources/bootstrap.3.3.6/css/bootstrap.min.css" rel="stylesheet">
         <link href="${pageContext.request.contextPath}/resources/font-awesome.4.6.1/css/font-awesome.min.css" rel="stylesheet">
@@ -48,7 +47,7 @@
                         <span class="icon-bar bar2"></span>
                         <span class="icon-bar bar3"></span>
                     </button>
-                    <a class="navbar-brand" href="#home">Day-Day</a>
+                    <a class="navbar-brand" href="#home">Every Day</a>
                 </div>
             </div>
         </nav>
@@ -173,27 +172,10 @@
             <footer class="footer">
 
                 <div class="container">
-                    <p class="text-muted"> Copyright &copy; Company - All rights reserved </p>
+                    <p class="text-muted"> Copyright &copy; EveryDay - All rights reserved </p>
                 </div>
             </footer>
-            <script type="text/javascript">
-                (function (i, s, o, g, r, a, m) {
-                    i['GoogleAnalyticsObject'] = r;
-                    i[r] = i[r] || function () {
-                        (i[r].q = i[r].q || []).push(arguments)
-                    }, i[r].l = 1 * new Date();
-                    a = s.createElement(o),
-                            m = s.getElementsByTagName(o)[0];
-                    a.async = 1;
-                    a.src = g;
-                    m.parentNode.insertBefore(a, m)
-                })(window, document, 'script', '../../www.google-analytics.com/analytics.js', 'ga');
-
-                ga('create', 'UA-49755460-1', 'auto', {'allowLinker': true});
-                ga('require', 'linker');
-                ga('linker:autoLink', ['bootdey.com', 'www.bootdey.com', 'demos.bootdey.com']);
-                ga('send', 'pageview');
-            </script>
+            
         </div>
         <script src="${pageContext.request.contextPath}/resources/js/lib/angular.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/lib/angular-resource.min.js"></script>
@@ -208,8 +190,6 @@
         <script src="${pageContext.request.contextPath}/resources/js/regapp.js"></script>
         <script src="${pageContext.request.contextPath}/resources/js/loginCtrl.js"></script>
 
-
     </body>
 
-    <!-- Mirrored from demos.bootdey.com/dayday/ by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 18 Apr 2017 11:23:06 GMT -->
 </html>
